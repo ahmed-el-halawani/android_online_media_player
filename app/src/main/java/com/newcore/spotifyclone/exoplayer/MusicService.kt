@@ -28,21 +28,6 @@ class MusicService : MediaBrowserServiceCompat() {
     lateinit var mediaSessionConnector: MediaSessionConnector
 
 
-    override fun onGetRoot(
-        clientPackageName: String,
-        clientUid: Int,
-        rootHints: Bundle?,
-    ): BrowserRoot? {
-        TODO("Not yet implemented")
-    }
-
-    override fun onLoadChildren(
-        parentId: String,
-        result: Result<MutableList<MediaBrowserCompat.MediaItem>>,
-    ) {
-        TODO("Not yet implemented")
-    }
-
     override fun onCreate() {
         super.onCreate()
 
@@ -56,7 +41,6 @@ class MusicService : MediaBrowserServiceCompat() {
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         }
 
-
         mediaSessionCompat = MediaSessionCompat(this, SERVICE_TAG).apply {
             setSessionActivity(pendingIntent)
             isActive = true
@@ -68,4 +52,19 @@ class MusicService : MediaBrowserServiceCompat() {
         mediaSessionConnector.setPlayer(exoplayerProvider)
 
     }
+
+    override fun onGetRoot(
+        clientPackageName: String,
+        clientUid: Int,
+        rootHints: Bundle?,
+    ): BrowserRoot? {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoadChildren(
+        parentId: String,
+        result: Result<MutableList<MediaBrowserCompat.MediaItem>>,
+    ) {
+    }
+
 }
